@@ -30,8 +30,8 @@ public class UserService {
         user.setPassword(userDto.password());
         user.setConfirmed("Pendency");
         User userSaved = this.userRepository.save(user);
-        userProducer.publishMessageEmail(user, "Confirme seu Cadastro",
-                "Olá " + user.getName() + " , confirme seu cadastro no link: http://localhost:8081/user/confirm/"+userSaved.getId().toString());
+        userProducer.publishMessageEmail(user, "Confirm your registration",
+                "Hello " + user.getName() + " , confirm your registration by clicking the link: http://localhost:8081/user/confirm/"+userSaved.getId().toString());
 
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
@@ -39,9 +39,9 @@ public class UserService {
         User user = this.userRepository.getReferenceById(idUser);
         user.setConfirmed("Yes");
         this.userRepository.save(user);
-        userProducer.publishMessageEmail(user, "Cadastro realizado com sucesso!",
-                "Olá " + user.getName() + " , seja bem vindo(a) a plataforma!");
-        return new ResponseEntity<>("Cadastro confirmado!", HttpStatus.CREATED);
+        userProducer.publishMessageEmail(user, "Registration confirmed successfully!",
+                "Hello " + user.getName() + " , welcome to the platform!");
+        return new ResponseEntity<>("Registration confirmed successfully!", HttpStatus.CREATED);
     }
 
 }
