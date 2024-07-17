@@ -10,5 +10,5 @@ spring.datasource.username=username
 spring.datasource.password=password
 spring.jpa.hibernate.ddl-auto=update
 spring.rabbitmq.addresses=amqps://rabbitmq_addresses
-broker.queue.email.name=email
+broker.queue.email-register.name = default.email-register
 ```
